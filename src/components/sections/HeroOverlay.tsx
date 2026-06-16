@@ -37,13 +37,12 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
     }
 
     rafRef.current = requestAnimationFrame(update)
-
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
   }, [progressRef, reducedMotion])
 
-  // Entry animation
+  // Animation d'entrée
   useEffect(() => {
     if (!containerRef.current || reducedMotion) return
     const el = containerRef.current
@@ -77,7 +76,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             fontSize: 'clamp(2.5rem, 7vw, 6rem)',
             fontWeight: 300,
             fontStyle: 'italic',
-            color: '#F7F6F2',
+            color: '#F5F1E8',
             lineHeight: 1.05,
             letterSpacing: '-0.01em',
             marginBottom: '1.5rem',
@@ -93,7 +92,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             fontFamily: 'Jost, sans-serif',
             fontSize: 'clamp(0.95rem, 1.8vw, 1.15rem)',
             fontWeight: 300,
-            color: '#8B8678',
+            color: '#8B8070',
             marginBottom: '2.5rem',
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
@@ -108,8 +107,8 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             style={{
               display: 'inline-block',
               padding: '0.85rem 2.5rem',
-              border: '1px solid #C9A96E',
-              color: '#C9A96E',
+              border: '1px solid #9C7C46',
+              color: '#9C7C46',
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.85rem',
               fontWeight: 400,
@@ -119,12 +118,12 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
               transition: 'background 0.3s ease, color 0.3s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#C9A96E'
-              e.currentTarget.style.color = '#0E0E0C'
+              e.currentTarget.style.background = '#9C7C46'
+              e.currentTarget.style.color = '#1A1814'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.color = '#C9A96E'
+              e.currentTarget.style.color = '#9C7C46'
             }}
           >
             Estimer mon potentiel →
@@ -153,7 +152,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             fontSize: '0.7rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#8B8678',
+            color: '#8B8070',
           }}
         >
           Défiler
@@ -162,7 +161,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
           style={{
             width: '1px',
             height: '40px',
-            background: 'linear-gradient(to bottom, #C9A96E, transparent)',
+            background: 'linear-gradient(to bottom, #9C7C46, transparent)',
             animation: 'scrollPulse 2s ease-in-out infinite',
           }}
         />

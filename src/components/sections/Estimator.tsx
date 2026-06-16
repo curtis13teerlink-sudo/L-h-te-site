@@ -4,15 +4,13 @@ export default function Estimator() {
   const [revenuActuel, setRevenuActuel] = useState(1500)
   const [nuits, setNuits] = useState(15)
 
-  const potentiel = Math.round(
-    revenuActuel * 1.4 * (nuits / Math.max(nuits, 10)) + nuits * 45
-  )
+  const potentiel = Math.round(revenuActuel * 1.38 + nuits * 52)
 
   return (
     <section
       id="estimateur"
       style={{
-        background: '#111110',
+        background: '#F5F1E8',
         padding: '6rem 2rem',
       }}
     >
@@ -24,7 +22,7 @@ export default function Estimator() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8678',
+              color: '#8B8070',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -37,7 +35,7 @@ export default function Estimator() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#F7F6F2',
+              color: '#1A1814',
               lineHeight: 1.1,
               marginBottom: '1rem',
             }}
@@ -49,7 +47,7 @@ export default function Estimator() {
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.95rem',
               fontWeight: 300,
-              color: '#8B8678',
+              color: '#8B8070',
             }}
           >
             Déplacez les curseurs pour voir ce que L'HÔTE peut générer pour votre bien.
@@ -66,12 +64,13 @@ export default function Estimator() {
             }}
           >
             <label
+              htmlFor="revenu"
               style={{
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.8rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: '#8B8678',
+                color: '#8B8070',
               }}
             >
               Revenus mensuels actuels
@@ -80,13 +79,14 @@ export default function Estimator() {
               style={{
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '1.3rem',
-                color: '#F7F6F2',
+                color: '#1A1814',
               }}
             >
               {revenuActuel.toLocaleString('fr-FR')} €
             </span>
           </div>
           <input
+            id="revenu"
             type="range"
             min={0}
             max={4000}
@@ -106,12 +106,13 @@ export default function Estimator() {
             }}
           >
             <label
+              htmlFor="nuits"
               style={{
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.8rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: '#8B8678',
+                color: '#8B8070',
               }}
             >
               Nuits louées par mois
@@ -120,13 +121,14 @@ export default function Estimator() {
               style={{
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '1.3rem',
-                color: '#F7F6F2',
+                color: '#1A1814',
               }}
             >
               {nuits} nuits
             </span>
           </div>
           <input
+            id="nuits"
             type="range"
             min={0}
             max={30}
@@ -136,13 +138,13 @@ export default function Estimator() {
           />
         </div>
 
-        {/* Result */}
+        {/* Résultat */}
         <div
           style={{
             textAlign: 'center',
             padding: '2.5rem',
-            border: '1px solid rgba(201, 169, 110, 0.25)',
-            background: 'rgba(201, 169, 110, 0.04)',
+            border: '1px solid rgba(156, 124, 70, 0.25)',
+            background: 'rgba(156, 124, 70, 0.04)',
           }}
         >
           <p
@@ -151,7 +153,7 @@ export default function Estimator() {
               fontSize: '0.75rem',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: '#8B8678',
+              color: '#8B8070',
               marginBottom: '0.75rem',
             }}
           >
@@ -162,7 +164,7 @@ export default function Estimator() {
               fontFamily: '"Cormorant Garamond", Georgia, serif',
               fontSize: 'clamp(3rem, 8vw, 5.5rem)',
               fontWeight: 300,
-              color: '#C9A96E',
+              color: '#9C7C46',
               lineHeight: 1,
               marginBottom: '0.5rem',
             }}
@@ -173,7 +175,7 @@ export default function Estimator() {
             style={{
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.75rem',
-              color: '#8B8678',
+              color: '#8B8070',
               fontStyle: 'italic',
               marginTop: '1rem',
             }}
@@ -188,8 +190,8 @@ export default function Estimator() {
             style={{
               display: 'inline-block',
               padding: '0.85rem 2.5rem',
-              background: '#C9A96E',
-              color: '#0E0E0C',
+              background: '#9C7C46',
+              color: '#FAF8F2',
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.85rem',
               fontWeight: 500,

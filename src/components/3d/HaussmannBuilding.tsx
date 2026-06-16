@@ -1,4 +1,4 @@
-import { useRef, useMemo, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -11,166 +11,258 @@ function smoothstep(edge0: number, edge1: number, x: number): number {
   return t * t * (3 - 2 * t)
 }
 
-// Material definitions
-const facadeMat = new THREE.MeshStandardMaterial({ color: '#D4C8B0', roughness: 0.85, metalness: 0.0 })
-const zincMat = new THREE.MeshStandardMaterial({ color: '#3A4550', roughness: 0.6, metalness: 0.4 })
-const windowMat = new THREE.MeshStandardMaterial({ color: '#0D1520', emissive: '#1a2535', emissiveIntensity: 0.3 })
-const ironMat = new THREE.MeshStandardMaterial({ color: '#C9A96E', roughness: 0.25, metalness: 0.85 })
-const cornicheMat = new THREE.MeshStandardMaterial({ color: '#E8E0D0', roughness: 0.7, metalness: 0.0 })
-const rustiqueMat = new THREE.MeshStandardMaterial({ color: '#C8BAA0', roughness: 0.9, metalness: 0.0 })
+// ── Constantes de géométrie ──
+const FLOOR_H = 0.75
+const BLDG_W = 4.0
+const BLDG_D = 0.55
+const WIN_W = 0.50
+const WIN_H = 0.55
+const CORNICE_H = 0.07
 
-// Base Y positions
+// ── Positions Y de base ──
 const BASE_GROUND_Y = 0
-const BASE_F1_Y = 0.65
-const BASE_F2_Y = 1.30
-const BASE_F3_Y = 1.95
-const BASE_F4_Y = 2.60
-const BASE_ROOF_Y = 3.25
+const BASE_F1_Y = FLOOR_H        // 0.75
+const BASE_F2_Y = FLOOR_H * 2    // 1.50
+const BASE_F3_Y = FLOOR_H * 3    // 2.25
+const BASE_F4_Y = FLOOR_H * 4    // 3.00
+const BASE_ROOF_Y = FLOOR_H * 5  // 3.75
 
-function WindowMesh({ x, y, z }: { x: number; y: number; z: number }) {
+// ── Matériaux (module-level, réutilisés) ──
+const stoneMat = new THREE.MeshStandardMaterial({ color: '#D8CDB5', roughness: 0.88, metalness: 0.02 })
+const corniceMat = new THREE.MeshStandardMaterial({ color: '#E8DEC8', roughness: 0.80, metalness: 0.02 })
+const rustiqueMat = new THREE.MeshStandardMaterial({ color: '#C8BDA5', roughness: 0.92, metalness: 0.01 })
+const windowMat = new THREE.MeshStandardMaterial({ color: '#1C2A3A', emissive: '#2A4060', emissiveIntensity: 0.5, roughness: 0.1, metalness: 0.3 })
+const ironMat = new THREE.MeshStandardMaterial({ color: '#9C7C46', roughness: 0.25, metalness: 0.88 })
+const zincMat = new THREE.MeshStandardMaterial({ color: '#6B7A7D', roughness: 0.52, metalness: 0.35 })
+const zincDarkMat = new THREE.MeshStandardMaterial({ color: '#5A6B72', roughness: 0.55, metalness: 0.32 })
+const doorMat = new THREE.MeshStandardMaterial({ color: '#2A1810', roughness: 0.88, metalness: 0.0 })
+
+// Suppress unused variable warning for doorMat — it IS used in GroundFloor
+void BLDG_W; void BLDG_D; void WIN_W; void WIN_H; void CORNICE_H;
+
+// ── WindowWithFrame ──
+function WindowWithFrame({ x, y, z }: { x: number; y: number; z: number }) {
   return (
     <group position={[x, y, z]}>
-      {/* Window frame slightly extruded */}
-      <mesh material={cornicheMat}>
-        <boxGeometry args={[0.59, 0.39, 0.06]} />
+      {/* Encadrement saillant */}
+      <mesh material={corniceMat}>
+        <boxGeometry args={[0.56, 0.62, 0.06]} />
       </mesh>
-      <mesh position={[0, 0, 0.04]} material={windowMat}>
-        <boxGeometry args={[0.52, 0.33, 0.04]} />
+      {/* Appui de fenêtre */}
+      <mesh position={[0, -0.32, 0.035]} material={corniceMat}>
+        <boxGeometry args={[0.60, 0.035, 0.09]} />
+      </mesh>
+      {/* Verre emissif */}
+      <mesh position={[0, 0, 0.02]} material={windowMat}>
+        <boxGeometry args={[0.44, 0.53, 0.025]} />
       </mesh>
     </group>
   )
 }
 
-function Balcony({ x }: { x: number }) {
-  const balusterPositions = useMemo(() => {
-    const positions = []
-    for (let i = 0; i < 6; i++) {
-      positions.push(-0.27 + i * 0.11)
-    }
-    return positions
-  }, [])
-
-  return (
-    <group position={[x, -0.2, 0.46]}>
-      {/* Rail */}
-      <mesh material={ironMat}>
-        <boxGeometry args={[0.66, 0.05, 0.08]} />
-      </mesh>
-      {/* Balusters */}
-      {balusterPositions.map((bx, i) => (
-        <mesh key={i} position={[bx, -0.1, 0]} material={ironMat}>
-          <boxGeometry args={[0.04, 0.22, 0.04]} />
-        </mesh>
-      ))}
-    </group>
-  )
-}
-
-function StandardFloor({ baseY }: { baseY: number }) {
-  return (
-    <group>
-      {/* Main facade */}
-      <mesh material={facadeMat}>
-        <boxGeometry args={[4, 0.65, 0.8]} />
-      </mesh>
-      {/* Cornice top */}
-      <mesh position={[0, 0.34, 0]} material={cornicheMat}>
-        <boxGeometry args={[4.05, 0.06, 0.85]} />
-      </mesh>
-      {/* 3 windows + balconies */}
-      <WindowMesh x={-1.3} y={0.02} z={0.42} />
-      <WindowMesh x={0} y={0.02} z={0.42} />
-      <WindowMesh x={1.3} y={0.02} z={0.42} />
-      <Balcony x={-1.3} />
-      <Balcony x={0} />
-      <Balcony x={1.3} />
-    </group>
-  )
-}
-
+// ── GroundFloor ──
 function GroundFloor() {
   return (
     <group>
-      {/* Rusticated stone bands */}
-      <mesh material={facadeMat}>
-        <boxGeometry args={[4, 0.65, 0.8]} />
+      {/* Façade principale */}
+      <mesh material={stoneMat}>
+        <boxGeometry args={[BLDG_W, FLOOR_H, BLDG_D]} />
       </mesh>
-      {/* Rustication lines */}
-      {[-0.2, -0.05, 0.1, 0.25].map((y, i) => (
-        <mesh key={i} position={[0, y, 0.41]} material={rustiqueMat}>
-          <boxGeometry args={[4.01, 0.02, 0.02]} />
+
+      {/* Bandes de refend horizontales */}
+      {([-0.27, -0.14, 0.0, 0.14] as number[]).map((ry, i) => (
+        <mesh key={i} position={[0, ry, 0]} material={rustiqueMat}>
+          <boxGeometry args={[BLDG_W, 0.018, BLDG_D]} />
         </mesh>
       ))}
-      {/* Porte cochère pillars */}
-      <mesh position={[-0.32, -0.05, 0.42]} material={cornicheMat}>
-        <boxGeometry args={[0.15, 0.55, 0.85]} />
+
+      {/* Porte cochère — soubassement */}
+      <mesh position={[0, 0, 0.005]} material={rustiqueMat}>
+        <boxGeometry args={[0.90, 0.68, 0.56]} />
       </mesh>
-      <mesh position={[0.32, -0.05, 0.42]} material={cornicheMat}>
-        <boxGeometry args={[0.15, 0.55, 0.85]} />
+      {/* Pilastre gauche */}
+      <mesh position={[-0.44, 0, 0.015]} material={corniceMat}>
+        <boxGeometry args={[0.11, 0.62, 0.58]} />
       </mesh>
-      {/* Arch - torus half */}
-      <mesh position={[0, 0.22, 0.42]} rotation={[Math.PI / 2, 0, 0]} material={cornicheMat}>
-        <torusGeometry args={[0.32, 0.05, 8, 16, Math.PI]} />
+      {/* Pilastre droit */}
+      <mesh position={[0.44, 0, 0.015]} material={corniceMat}>
+        <boxGeometry args={[0.11, 0.62, 0.58]} />
       </mesh>
-      {/* Door */}
-      <mesh position={[0, -0.05, 0.43]} material={windowMat}>
-        <boxGeometry args={[0.52, 0.45, 0.02]} />
+      {/* Porte en bois */}
+      <mesh position={[0, -0.14, 0.285]} material={doorMat}>
+        <boxGeometry args={[0.68, 0.48, 0.03]} />
       </mesh>
-      {/* Side windows ground floor */}
-      <WindowMesh x={-1.4} y={-0.05} z={0.42} />
-      <WindowMesh x={1.4} y={-0.05} z={0.42} />
-      {/* Cornice top */}
-      <mesh position={[0, 0.34, 0]} material={cornicheMat}>
-        <boxGeometry args={[4.05, 0.06, 0.85]} />
+      {/* Arche */}
+      <mesh position={[0, 0.22, 0.285]} rotation={[Math.PI / 2, 0, 0]} material={corniceMat}>
+        <torusGeometry args={[0.34, 0.044, 8, 18, Math.PI]} />
+      </mesh>
+      {/* Clé de voûte */}
+      <mesh position={[0, 0.56, 0.285]} material={corniceMat}>
+        <boxGeometry args={[0.09, 0.09, 0.06]} />
+      </mesh>
+      {/* Imposte (verre au-dessus porte) */}
+      <mesh position={[0, 0.32, 0.286]} material={windowMat}>
+        <boxGeometry args={[0.62, 0.18, 0.02]} />
+      </mesh>
+      {/* Marches */}
+      <mesh position={[0, -0.38, 0.37]} material={corniceMat}>
+        <boxGeometry args={[0.9, 0.04, 0.18]} />
+      </mesh>
+
+      {/* Fenêtres latérales */}
+      <WindowWithFrame x={-1.52} y={0.0} z={0.285} />
+      <WindowWithFrame x={1.52} y={0.0} z={0.285} />
+
+      {/* Corniche haute */}
+      <mesh position={[0, 0.385, 0]} material={corniceMat}>
+        <boxGeometry args={[4.15, CORNICE_H, 0.62]} />
       </mesh>
     </group>
   )
 }
 
-function MansardRoof() {
+// ── StandardFloor (étages 1 et 3) ──
+function StandardFloor() {
   return (
     <group>
-      {/* Main mansard body */}
-      <mesh material={zincMat}>
-        <boxGeometry args={[4.3, 0.55, 0.9]} />
+      {/* Façade */}
+      <mesh material={stoneMat}>
+        <boxGeometry args={[BLDG_W, FLOOR_H, BLDG_D]} />
       </mesh>
-      {/* Chimneys */}
-      <mesh position={[-1.2, 0.55, 0]} material={rustiqueMat}>
-        <cylinderGeometry args={[0.1, 0.12, 0.5, 8]} />
+      {/* Corniche haute */}
+      <mesh position={[0, 0.385, 0]} material={corniceMat}>
+        <boxGeometry args={[4.15, CORNICE_H, 0.62]} />
       </mesh>
-      <mesh position={[1.2, 0.55, 0]} material={rustiqueMat}>
-        <cylinderGeometry args={[0.1, 0.12, 0.5, 8]} />
+      {/* 3 fenêtres */}
+      <WindowWithFrame x={-1.35} y={0.02} z={0.285} />
+      <WindowWithFrame x={0} y={0.02} z={0.285} />
+      <WindowWithFrame x={1.35} y={0.02} z={0.285} />
+    </group>
+  )
+}
+
+// ── FloorWithBalcony (étages 2 et 4) ──
+function FloorWithBalcony() {
+  // 22 balusters de X:-2.1 à X:2.1
+  const balusterCount = 22
+  const balusterMesh = useRef<THREE.InstancedMesh>(null!)
+  const balusterGeo = new THREE.BoxGeometry(0.038, 0.18, 0.038)
+
+  // On utilise useEffect pour positionner les instances
+  useEffect(() => {
+    if (!balusterMesh.current) return
+    const dummy = new THREE.Object3D()
+    for (let i = 0; i < balusterCount; i++) {
+      const bx = -2.1 + (i / (balusterCount - 1)) * 4.2
+      dummy.position.set(bx, -0.25, 0.555)
+      dummy.updateMatrix()
+      balusterMesh.current.setMatrixAt(i, dummy.matrix)
+    }
+    balusterMesh.current.instanceMatrix.needsUpdate = true
+  }, [])
+
+  return (
+    <group>
+      {/* Façade */}
+      <mesh material={stoneMat}>
+        <boxGeometry args={[BLDG_W, FLOOR_H, BLDG_D]} />
       </mesh>
-      {/* Chimney tops */}
-      <mesh position={[-1.2, 0.85, 0]} material={zincMat}>
-        <cylinderGeometry args={[0.13, 0.10, 0.1, 8]} />
+      {/* Corniche haute */}
+      <mesh position={[0, 0.385, 0]} material={corniceMat}>
+        <boxGeometry args={[4.15, CORNICE_H, 0.62]} />
       </mesh>
-      <mesh position={[1.2, 0.85, 0]} material={zincMat}>
-        <cylinderGeometry args={[0.13, 0.10, 0.1, 8]} />
+      {/* 3 fenêtres */}
+      <WindowWithFrame x={-1.35} y={0.02} z={0.285} />
+      <WindowWithFrame x={0} y={0.02} z={0.285} />
+      <WindowWithFrame x={1.35} y={0.02} z={0.285} />
+
+      {/* Grand balcon filant */}
+      {/* Tablette balcon */}
+      <mesh position={[0, -0.33, 0.42]} material={stoneMat}>
+        <boxGeometry args={[4.35, 0.04, 0.30]} />
       </mesh>
-      {/* Lucarnes (dormer windows) */}
-      {[-1.3, 0, 1.3].map((x, i) => (
-        <group key={i} position={[x, 0.3, 0.42]}>
-          <mesh material={zincMat}>
-            <boxGeometry args={[0.45, 0.35, 0.1]} />
+      {/* Rail principal */}
+      <mesh position={[0, -0.15, 0.555]} material={ironMat}>
+        <boxGeometry args={[4.35, 0.042, 0.055]} />
+      </mesh>
+      {/* Retour gauche */}
+      <mesh position={[-2.19, -0.15, 0.41]} material={ironMat}>
+        <boxGeometry args={[0.055, 0.042, 0.30]} />
+      </mesh>
+      {/* Retour droit */}
+      <mesh position={[2.19, -0.15, 0.41]} material={ironMat}>
+        <boxGeometry args={[0.055, 0.042, 0.30]} />
+      </mesh>
+      {/* Balusters instanciés */}
+      <instancedMesh ref={balusterMesh} args={[balusterGeo, ironMat, balusterCount]} />
+    </group>
+  )
+}
+
+// ── MansardRoof ──
+function MansardRoof() {
+  const lucarnePositions = [-1.35, 0, 1.35]
+  const chimneyPositions = [-1.15, 1.15]
+
+  return (
+    <group>
+      {/* Corniche bas toit */}
+      <mesh position={[0, -0.30, 0]} material={corniceMat}>
+        <boxGeometry args={[4.4, 0.09, 0.63]} />
+      </mesh>
+      {/* Corps principal bas (mansard) */}
+      <mesh position={[0, -0.06, 0]} material={zincMat}>
+        <boxGeometry args={[4.2, 0.42, 0.61]} />
+      </mesh>
+      {/* Corps principal haut (retrait) */}
+      <mesh position={[0, 0.26, 0]} material={zincDarkMat}>
+        <boxGeometry args={[3.85, 0.28, 0.54]} />
+      </mesh>
+
+      {/* 3 lucarnes */}
+      {lucarnePositions.map((lx, i) => (
+        <group key={i} position={[lx, 0, 0]}>
+          {/* Corps lucarne */}
+          <mesh position={[0, 0.10, 0.34]} material={zincMat}>
+            <boxGeometry args={[0.46, 0.34, 0.14]} />
           </mesh>
-          <mesh material={windowMat} position={[0, 0, 0.04]}>
-            <boxGeometry args={[0.36, 0.28, 0.04]} />
+          {/* Fenêtre lucarne */}
+          <mesh position={[0, 0.10, 0.415]} material={windowMat}>
+            <boxGeometry args={[0.32, 0.23, 0.03]} />
           </mesh>
-          {/* Triangle roof for lucarne */}
-          <mesh position={[0, 0.24, 0]} material={zincMat}>
-            <boxGeometry args={[0.5, 0.06, 0.12]} />
+          {/* Fronton triangulaire */}
+          <mesh position={[0, 0.28, 0.34]} material={zincMat}>
+            <boxGeometry args={[0.52, 0.05, 0.12]} />
+          </mesh>
+          {/* Moulure fronton gauche */}
+          <mesh position={[-0.12, 0.20, 0.34]} rotation={[0, 0, -0.5]} material={zincMat}>
+            <boxGeometry args={[0.28, 0.03, 0.08]} />
+          </mesh>
+          {/* Moulure fronton droit */}
+          <mesh position={[0.12, 0.20, 0.34]} rotation={[0, 0, 0.5]} material={zincMat}>
+            <boxGeometry args={[0.28, 0.03, 0.08]} />
           </mesh>
         </group>
       ))}
-      {/* Zinc cornice bottom */}
-      <mesh position={[0, -0.3, 0]} material={zincMat}>
-        <boxGeometry args={[4.4, 0.08, 0.95]} />
-      </mesh>
+
+      {/* 2 cheminées */}
+      {chimneyPositions.map((cx, i) => (
+        <group key={i} position={[cx, 0, 0]}>
+          {/* Corps cheminée */}
+          <mesh position={[0, 0.42, 0]} material={stoneMat}>
+            <cylinderGeometry args={[0.08, 0.10, 0.52, 8]} />
+          </mesh>
+          {/* Capuchon */}
+          <mesh position={[0, 0.72, 0]} material={zincMat}>
+            <cylinderGeometry args={[0.12, 0.08, 0.06, 8]} />
+          </mesh>
+        </group>
+      ))}
     </group>
   )
 }
 
+// ── HaussmannBuilding principal ──
 export default function HaussmannBuilding({ progressRef }: HaussmannBuildingProps) {
   const buildingGroupRef = useRef<THREE.Group>(null!)
   const roofGroupRef = useRef<THREE.Group>(null!)
@@ -178,12 +270,10 @@ export default function HaussmannBuilding({ progressRef }: HaussmannBuildingProp
   const floor3GroupRef = useRef<THREE.Group>(null!)
   const floor2GroupRef = useRef<THREE.Group>(null!)
   const floor1GroupRef = useRef<THREE.Group>(null!)
-  const goldSpotRef = useRef<THREE.SpotLight>(null!)
 
   const mouseRef = useRef({ x: 0, y: 0 })
   const autoRotRef = useRef(0)
 
-  // Current lerped Y positions
   const currentY = useRef({
     roof: BASE_ROOF_Y,
     f4: BASE_F4_Y,
@@ -192,7 +282,6 @@ export default function HaussmannBuilding({ progressRef }: HaussmannBuildingProp
     f1: BASE_F1_Y,
   })
 
-  // Mouse tracking — dans useEffect, pas dans le rendu
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       mouseRef.current.x = (e.clientX / window.innerWidth - 0.5) * 2
@@ -202,114 +291,91 @@ export default function HaussmannBuilding({ progressRef }: HaussmannBuildingProp
     return () => window.removeEventListener('mousemove', handler)
   }, [])
 
-  useFrame((_state, _delta) => {
+  useFrame(() => {
     if (!buildingGroupRef.current) return
 
     const p = progressRef.current
 
-    // Smoothstep phases
-    const s1 = smoothstep(0.15, 0.30, p)
-    const s2 = smoothstep(0.30, 0.45, p)
-    const s3 = smoothstep(0.45, 0.60, p)
-    const s4 = smoothstep(0.60, 0.75, p)
-    const reasm = smoothstep(0.75, 1.0, p)
+    // Phases smoothstep
+    const s1 = smoothstep(0.15, 0.28, p)
+    const s2 = smoothstep(0.28, 0.42, p)
+    const s3 = smoothstep(0.42, 0.56, p)
+    const s4 = smoothstep(0.56, 0.70, p)
+    const reasm = smoothstep(0.75, 0.98, p)
 
-    // Target Y positions
-    const maxS1234 = Math.max(s1, s2, s3, s4)
-    const targetRoofY = BASE_ROOF_Y + (1 - reasm) * maxS1234 * 3.2
-    const targetF4Y = BASE_F4_Y + (1 - reasm) * maxS1234 * 2.2
-    const targetF3Y = BASE_F3_Y + (1 - reasm) * Math.max(s2, s3, s4) * 1.5
-    const targetF2Y = BASE_F2_Y + (1 - reasm) * Math.max(s3, s4) * 0.9
-    const targetF1Y = BASE_F1_Y + (1 - reasm) * s4 * 0.5
+    const maxAll = Math.max(s1, s2, s3, s4)
 
-    // Lerp current positions
-    const lerpFactor = 0.08
+    const targetRoofY = BASE_ROOF_Y + (1 - reasm) * maxAll * 3.5
+    const targetF4Y   = BASE_F4_Y   + (1 - reasm) * maxAll * 2.4
+    const targetF3Y   = BASE_F3_Y   + (1 - reasm) * Math.max(s2, s3, s4) * 1.6
+    const targetF2Y   = BASE_F2_Y   + (1 - reasm) * Math.max(s3, s4) * 1.0
+    const targetF1Y   = BASE_F1_Y   + (1 - reasm) * s4 * 0.55
+
+    const lerpFactor = 0.065
+
     currentY.current.roof = THREE.MathUtils.lerp(currentY.current.roof, targetRoofY, lerpFactor)
-    currentY.current.f4 = THREE.MathUtils.lerp(currentY.current.f4, targetF4Y, lerpFactor)
-    currentY.current.f3 = THREE.MathUtils.lerp(currentY.current.f3, targetF3Y, lerpFactor)
-    currentY.current.f2 = THREE.MathUtils.lerp(currentY.current.f2, targetF2Y, lerpFactor)
-    currentY.current.f1 = THREE.MathUtils.lerp(currentY.current.f1, targetF1Y, lerpFactor)
+    currentY.current.f4   = THREE.MathUtils.lerp(currentY.current.f4,   targetF4Y,   lerpFactor)
+    currentY.current.f3   = THREE.MathUtils.lerp(currentY.current.f3,   targetF3Y,   lerpFactor)
+    currentY.current.f2   = THREE.MathUtils.lerp(currentY.current.f2,   targetF2Y,   lerpFactor)
+    currentY.current.f1   = THREE.MathUtils.lerp(currentY.current.f1,   targetF1Y,   lerpFactor)
 
-    // Apply Y positions
-    if (roofGroupRef.current) roofGroupRef.current.position.y = currentY.current.roof
+    if (roofGroupRef.current)  roofGroupRef.current.position.y  = currentY.current.roof
     if (floor4GroupRef.current) floor4GroupRef.current.position.y = currentY.current.f4
     if (floor3GroupRef.current) floor3GroupRef.current.position.y = currentY.current.f3
     if (floor2GroupRef.current) floor2GroupRef.current.position.y = currentY.current.f2
     if (floor1GroupRef.current) floor1GroupRef.current.position.y = currentY.current.f1
 
-    // Auto rotation when p < 0.15
-    if (p < 0.15) {
-      autoRotRef.current += 0.003
+    // Rotation auto ou parallaxe souris
+    if (p < 0.14) {
+      autoRotRef.current += 0.0025
       buildingGroupRef.current.rotation.y = autoRotRef.current
     } else {
-      // Mouse parallax
-      const targetRotY = mouseRef.current.x * (8 * Math.PI / 180)
+      const targetRotY = mouseRef.current.x * (6 * Math.PI / 180)
       const targetRotX = -mouseRef.current.y * (3 * Math.PI / 180)
       buildingGroupRef.current.rotation.y = THREE.MathUtils.lerp(
         buildingGroupRef.current.rotation.y,
         targetRotY,
-        0.05
+        0.04
       )
       buildingGroupRef.current.rotation.x = THREE.MathUtils.lerp(
         buildingGroupRef.current.rotation.x,
         targetRotX,
-        0.05
+        0.04
       )
-    }
-
-    // Gold spotlight follows active floor
-    if (goldSpotRef.current) {
-      let activeY = BASE_F1_Y
-      if (s4 > 0.1) activeY = currentY.current.f1
-      else if (s3 > 0.1) activeY = currentY.current.f2
-      else if (s2 > 0.1) activeY = currentY.current.f3
-      else if (s1 > 0.1) activeY = currentY.current.f4
-      goldSpotRef.current.target.position.set(0, activeY, 0)
-      goldSpotRef.current.target.updateMatrixWorld()
     }
   })
 
   return (
-    <group ref={buildingGroupRef} position={[0, -2, 0]}>
-      {/* Ground floor — static */}
+    <group ref={buildingGroupRef} position={[0, -2.5, 0]}>
+      {/* RDC — non animé */}
       <group position={[0, BASE_GROUND_Y, 0]}>
         <GroundFloor />
       </group>
 
-      {/* Floor 1 */}
+      {/* Étage 1 — StandardFloor */}
       <group ref={floor1GroupRef} position={[0, BASE_F1_Y, 0]}>
-        <StandardFloor baseY={BASE_F1_Y} />
+        <StandardFloor />
       </group>
 
-      {/* Floor 2 */}
+      {/* Étage 2 — FloorWithBalcony */}
       <group ref={floor2GroupRef} position={[0, BASE_F2_Y, 0]}>
-        <StandardFloor baseY={BASE_F2_Y} />
+        <FloorWithBalcony />
       </group>
 
-      {/* Floor 3 */}
+      {/* Étage 3 — StandardFloor */}
       <group ref={floor3GroupRef} position={[0, BASE_F3_Y, 0]}>
-        <StandardFloor baseY={BASE_F3_Y} />
+        <StandardFloor />
       </group>
 
-      {/* Floor 4 */}
+      {/* Étage 4 — FloorWithBalcony */}
       <group ref={floor4GroupRef} position={[0, BASE_F4_Y, 0]}>
-        <StandardFloor baseY={BASE_F4_Y} />
+        <FloorWithBalcony />
       </group>
 
-      {/* Roof */}
+      {/* Toit mansardé */}
       <group ref={roofGroupRef} position={[0, BASE_ROOF_Y, 0]}>
         <MansardRoof />
       </group>
-
-      {/* Gold spotlight */}
-      <spotLight
-        ref={goldSpotRef}
-        position={[3, 6, 3]}
-        intensity={2}
-        color="#C9A96E"
-        angle={0.4}
-        penumbra={0.5}
-      />
     </group>
   )
 }

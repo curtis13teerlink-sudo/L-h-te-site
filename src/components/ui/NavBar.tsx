@@ -13,7 +13,7 @@ export default function NavBar() {
       onEnter: () => {
         if (navRef.current) {
           gsap.to(navRef.current, {
-            backgroundColor: 'rgba(14, 14, 12, 0.95)',
+            backgroundColor: 'rgba(13, 20, 32, 0.96)',
             duration: 0.4,
             ease: 'power2.out',
           })
@@ -81,7 +81,7 @@ export default function NavBar() {
             fontSize: '1.4rem',
             fontWeight: 300,
             letterSpacing: '0.12em',
-            color: '#F7F6F2',
+            color: '#F5F1E8',
             lineHeight: 1,
           }}
         >
@@ -93,7 +93,7 @@ export default function NavBar() {
             fontSize: '0.55rem',
             letterSpacing: '0.3em',
             textTransform: 'uppercase',
-            color: '#8B8678',
+            color: '#8B8070',
             marginTop: '0.2rem',
           }}
         >
@@ -121,12 +121,12 @@ export default function NavBar() {
               fontWeight: 400,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: '#8B8678',
+              color: '#8B8070',
               textDecoration: 'none',
               transition: 'color 0.2s ease',
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = '#F7F6F2' }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = '#8B8678' }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#F5F1E8' }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#8B8070' }}
           >
             {link.label}
           </a>
@@ -140,19 +140,19 @@ export default function NavBar() {
             fontWeight: 400,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: '#C9A96E',
+            color: '#9C7C46',
             textDecoration: 'none',
             padding: '0.5rem 1.25rem',
-            border: '1px solid rgba(201, 169, 110, 0.4)',
+            border: '1px solid rgba(156, 124, 70, 0.4)',
             transition: 'background 0.3s ease, color 0.3s ease',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = '#C9A96E'
-            e.currentTarget.style.color = '#0E0E0C'
+            e.currentTarget.style.background = '#9C7C46'
+            e.currentTarget.style.color = '#1A1814'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = 'transparent'
-            e.currentTarget.style.color = '#C9A96E'
+            e.currentTarget.style.color = '#9C7C46'
           }}
         >
           Diagnostic gratuit
@@ -179,7 +179,7 @@ export default function NavBar() {
             display: 'block',
             width: '22px',
             height: '1px',
-            background: '#F7F6F2',
+            background: '#F5F1E8',
             transition: 'transform 0.3s ease, opacity 0.3s ease',
             transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none',
           }}
@@ -189,7 +189,7 @@ export default function NavBar() {
             display: 'block',
             width: '22px',
             height: '1px',
-            background: '#F7F6F2',
+            background: '#F5F1E8',
             transition: 'opacity 0.3s ease',
             opacity: menuOpen ? 0 : 1,
           }}
@@ -199,7 +199,7 @@ export default function NavBar() {
             display: 'block',
             width: '22px',
             height: '1px',
-            background: '#F7F6F2',
+            background: '#F5F1E8',
             transition: 'transform 0.3s ease, opacity 0.3s ease',
             transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none',
           }}
@@ -214,7 +214,7 @@ export default function NavBar() {
             top: '60px',
             left: 0,
             right: 0,
-            background: 'rgba(14, 14, 12, 0.98)',
+            background: 'rgba(13, 20, 32, 0.98)',
             backdropFilter: 'blur(12px)',
             padding: '2rem',
             display: 'flex',
@@ -232,10 +232,10 @@ export default function NavBar() {
                 fontSize: '1rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: '#F7F6F2',
+                color: '#F5F1E8',
                 textDecoration: 'none',
                 padding: '0.5rem 0',
-                borderBottom: '1px solid rgba(247, 246, 242, 0.06)',
+                borderBottom: '1px solid rgba(245, 241, 232, 0.06)',
               }}
             >
               {link.label}
@@ -249,10 +249,10 @@ export default function NavBar() {
               fontSize: '0.85rem',
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: '#C9A96E',
+              color: '#9C7C46',
               textDecoration: 'none',
               padding: '0.75rem 1.5rem',
-              border: '1px solid rgba(201, 169, 110, 0.4)',
+              border: '1px solid rgba(156, 124, 70, 0.4)',
               textAlign: 'center',
               marginTop: '0.5rem',
             }}

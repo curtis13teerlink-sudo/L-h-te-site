@@ -5,6 +5,7 @@ const STATS = [
   { value: '+40%', label: 'de revenus générés' },
   { value: '15', label: 'biens gérés à Paris' },
   { value: '100%', label: 'gestion déléguée' },
+  { value: '24/7', label: 'disponibilité support' },
 ]
 
 function StatItem({ value, label, index }: { value: string; label: string; index: number }) {
@@ -28,7 +29,7 @@ function StatItem({ value, label, index }: { value: string; label: string; index
           fontFamily: '"Cormorant Garamond", Georgia, serif',
           fontSize: 'clamp(3rem, 6vw, 5rem)',
           fontWeight: 300,
-          color: '#C9A96E',
+          color: '#9C7C46',
           lineHeight: 1,
           marginBottom: '0.75rem',
         }}
@@ -40,7 +41,7 @@ function StatItem({ value, label, index }: { value: string; label: string; index
           fontFamily: 'Jost, sans-serif',
           fontSize: '0.85rem',
           fontWeight: 300,
-          color: '#8B8678',
+          color: '#8B8070',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
         }}
@@ -55,13 +56,13 @@ export default function Stats() {
   return (
     <section
       style={{
-        background: '#0E0E0C',
+        background: '#1A1814',
         padding: '5rem 2rem',
       }}
     >
       <div
         style={{
-          maxWidth: '900px',
+          maxWidth: '1000px',
           margin: '0 auto',
           display: 'flex',
           flexWrap: 'wrap',
@@ -75,7 +76,7 @@ export default function Stats() {
               <div
                 style={{
                   width: '1px',
-                  background: 'linear-gradient(to bottom, transparent, #C9A96E44, transparent)',
+                  background: 'linear-gradient(to bottom, transparent, #9C7C4644, transparent)',
                   alignSelf: 'stretch',
                   margin: '2rem 0',
                 }}

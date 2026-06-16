@@ -1,25 +1,11 @@
 import { useState } from 'react'
 
-const inputStyle: React.CSSProperties = {
-  width: '100%',
-  background: 'transparent',
-  border: 'none',
-  borderBottom: '1px solid rgba(247, 246, 242, 0.2)',
-  color: '#0E0E0C',
-  fontFamily: 'Jost, sans-serif',
-  fontSize: '1rem',
-  fontWeight: 300,
-  padding: '0.75rem 0',
-  outline: 'none',
-  transition: 'border-color 0.3s ease',
-}
-
 const labelStyle: React.CSSProperties = {
   fontFamily: 'Jost, sans-serif',
   fontSize: '0.72rem',
   letterSpacing: '0.15em',
   textTransform: 'uppercase',
-  color: '#8B8678',
+  color: '#8B8070',
   display: 'block',
   marginBottom: '0.3rem',
 }
@@ -42,17 +28,25 @@ export default function Contact() {
       .catch(() => setSubmitted(true))
   }
 
-  const getFocusStyle = (name: string): React.CSSProperties => ({
-    ...inputStyle,
-    borderBottomColor: focused === name ? '#8B8678' : 'rgba(14, 14, 12, 0.25)',
-    color: '#0E0E0C',
+  const getInputStyle = (name: string): React.CSSProperties => ({
+    width: '100%',
+    background: 'transparent',
+    border: 'none',
+    borderBottom: `1px solid ${focused === name ? '#9C7C46' : '#C8BDA5'}`,
+    color: '#1A1814',
+    fontFamily: 'Jost, sans-serif',
+    fontSize: '1rem',
+    fontWeight: 300,
+    padding: '0.75rem 0',
+    outline: 'none',
+    transition: 'border-color 0.3s ease',
   })
 
   return (
     <section
       id="contact"
       style={{
-        background: '#F7F6F2',
+        background: '#F5F1E8',
         padding: '6rem 2rem',
       }}
     >
@@ -64,7 +58,7 @@ export default function Contact() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8678',
+              color: '#8B8070',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -77,7 +71,7 @@ export default function Contact() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#0E0E0C',
+              color: '#1A1814',
               lineHeight: 1.1,
               marginBottom: '1rem',
             }}
@@ -89,7 +83,7 @@ export default function Contact() {
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.95rem',
               fontWeight: 300,
-              color: '#8B8678',
+              color: '#8B8070',
               lineHeight: 1.7,
             }}
           >
@@ -102,21 +96,21 @@ export default function Contact() {
             style={{
               textAlign: 'center',
               padding: '3rem',
-              border: '1px solid rgba(201, 169, 110, 0.3)',
-              background: 'rgba(201, 169, 110, 0.05)',
+              border: '1px solid rgba(156, 124, 70, 0.3)',
+              background: 'rgba(156, 124, 70, 0.05)',
             }}
           >
             <div
               style={{
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '1.5rem',
-                color: '#0E0E0C',
+                color: '#1A1814',
                 marginBottom: '0.75rem',
               }}
             >
               Message reçu
             </div>
-            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.9rem', color: '#8B8678' }}>
+            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.9rem', color: '#8B8070' }}>
               Nous vous recontactons sous 24h pour planifier votre diagnostic.
             </p>
           </div>
@@ -140,7 +134,7 @@ export default function Contact() {
                   type="text"
                   required
                   placeholder="Jean"
-                  style={getFocusStyle('prenom')}
+                  style={getInputStyle('prenom')}
                   onFocus={() => setFocused('prenom')}
                   onBlur={() => setFocused(null)}
                 />
@@ -154,7 +148,7 @@ export default function Contact() {
                   type="email"
                   required
                   placeholder="jean@exemple.fr"
-                  style={getFocusStyle('email')}
+                  style={getInputStyle('email')}
                   onFocus={() => setFocused('email')}
                   onBlur={() => setFocused(null)}
                 />
@@ -167,7 +161,7 @@ export default function Contact() {
                   name="telephone"
                   type="tel"
                   placeholder="+33 6 00 00 00 00"
-                  style={getFocusStyle('telephone')}
+                  style={getInputStyle('telephone')}
                   onFocus={() => setFocused('telephone')}
                   onBlur={() => setFocused(null)}
                 />
@@ -180,7 +174,7 @@ export default function Contact() {
                   name="quartier"
                   type="text"
                   placeholder="Marais, Montmartre..."
-                  style={getFocusStyle('quartier')}
+                  style={getInputStyle('quartier')}
                   onFocus={() => setFocused('quartier')}
                   onBlur={() => setFocused(null)}
                 />
@@ -195,7 +189,7 @@ export default function Contact() {
                 rows={4}
                 placeholder="Parlez-nous de votre bien..."
                 style={{
-                  ...getFocusStyle('message'),
+                  ...getInputStyle('message'),
                   resize: 'vertical',
                   display: 'block',
                 }}
@@ -210,8 +204,8 @@ export default function Contact() {
                 style={{
                   display: 'inline-block',
                   padding: '1rem 3rem',
-                  background: '#C9A96E',
-                  color: '#0E0E0C',
+                  background: '#9C7C46',
+                  color: '#FAF8F2',
                   fontFamily: 'Jost, sans-serif',
                   fontSize: '0.85rem',
                   fontWeight: 500,

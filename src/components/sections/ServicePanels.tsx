@@ -56,7 +56,6 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
         if (!el) return
 
         const [start, end] = svc.range
-        const mid = (start + end) / 2
         const fadeWidth = 0.04
 
         let opacity: number
@@ -73,7 +72,6 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
         el.style.opacity = String(Math.max(0, Math.min(1, opacity)))
         el.style.pointerEvents = opacity < 0.05 ? 'none' : 'auto'
 
-        // Subtle translate
         const translateX = svc.side === 'right'
           ? `${(1 - opacity) * 20}px`
           : `${(opacity - 1) * 20}px`
@@ -110,9 +108,9 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
           <div
             style={{
               padding: '2rem',
-              background: 'rgba(14, 14, 12, 0.82)',
+              background: 'rgba(13, 20, 32, 0.85)',
               backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(201, 169, 110, 0.2)',
+              border: '1px solid rgba(156, 124, 70, 0.2)',
             }}
           >
             <span
@@ -121,7 +119,7 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
                 fontSize: '0.7rem',
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
-                color: '#C9A96E',
+                color: '#9C7C46',
                 display: 'block',
                 marginBottom: '1rem',
               }}
@@ -132,7 +130,7 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
               style={{
                 width: '30px',
                 height: '1px',
-                background: '#C9A96E',
+                background: '#9C7C46',
                 marginBottom: '1rem',
               }}
             />
@@ -142,7 +140,7 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
                 fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
                 fontWeight: 300,
                 fontStyle: 'italic',
-                color: '#F7F6F2',
+                color: '#F5F1E8',
                 lineHeight: 1.1,
                 marginBottom: '1.2rem',
                 whiteSpace: 'pre-line',
@@ -155,7 +153,7 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.88rem',
                 fontWeight: 300,
-                color: '#8B8678',
+                color: '#8B8070',
                 lineHeight: 1.7,
               }}
             >

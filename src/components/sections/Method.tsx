@@ -3,23 +3,23 @@ import { motion } from 'framer-motion'
 const STEPS = [
   {
     num: '01',
-    title: 'Diagnostic',
-    description: 'Appel de 30 min, audit complet de votre bien et de son potentiel Airbnb.',
+    title: 'Diagnostic gratuit',
+    description: 'Appel de 30 minutes pour comprendre votre bien, son potentiel et vos attentes. On vous dit exactement ce qu\'on peut faire — sans engagement.',
   },
   {
     num: '02',
     title: 'Valorisation',
-    description: 'Shooting professionnel, conseil déco, création de l\'annonce optimisée.',
+    description: 'Shooting professionnel, conseil déco ciblé, création de l\'annonce optimisée SEO. On prépare votre appartement pour faire la différence sur Airbnb.',
   },
   {
     num: '03',
     title: 'Lancement',
-    description: 'Mise en ligne, paramétrage des prix dynamiques, premiers voyageurs.',
+    description: 'Mise en ligne, paramétrage de la tarification dynamique, premiers voyageurs accueillis. Vous recevez la notification de votre premier virement.',
   },
   {
     num: '04',
     title: 'Gestion continue',
-    description: 'Nous gérons tout. Vous n\'intervenez plus jamais.',
+    description: 'Nous gérons tout, 365 jours par an. Vous recevez un reporting mensuel et un virement. Votre rôle : encaisser.',
   },
 ]
 
@@ -28,7 +28,7 @@ export default function Method() {
     <section
       id="methode"
       style={{
-        background: '#0E0E0C',
+        background: '#EDE8DE',
         padding: '6rem 2rem',
       }}
     >
@@ -40,7 +40,7 @@ export default function Method() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8678',
+              color: '#8B8070',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -53,7 +53,7 @@ export default function Method() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#F7F6F2',
+              color: '#1A1814',
               lineHeight: 1.1,
             }}
           >
@@ -61,7 +61,6 @@ export default function Method() {
           </h2>
         </div>
 
-        {/* Steps grid */}
         <div
           style={{
             display: 'grid',
@@ -70,15 +69,15 @@ export default function Method() {
             position: 'relative',
           }}
         >
-          {/* Connecting line */}
+          {/* Ligne de connexion */}
           <div
             style={{
               position: 'absolute',
-              top: '2.5rem',
+              top: '4rem',
               left: '12.5%',
               right: '12.5%',
               height: '1px',
-              background: 'linear-gradient(to right, transparent, #C9A96E44, #C9A96E44, transparent)',
+              background: 'linear-gradient(to right, transparent, #9C7C4444, #9C7C4444, transparent)',
             }}
           />
 
@@ -95,32 +94,21 @@ export default function Method() {
                 position: 'relative',
               }}
             >
-              {/* Number circle */}
+              {/* Numéro en grand */}
               <div
                 style={{
-                  width: '5rem',
-                  height: '5rem',
-                  border: '1px solid #C9A96E44',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 1.5rem',
-                  background: '#0E0E0C',
+                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontSize: '5rem',
+                  fontWeight: 300,
+                  color: '#9C7C46',
+                  lineHeight: 1,
+                  marginBottom: '0.5rem',
+                  opacity: 0.25,
                   position: 'relative',
                   zIndex: 1,
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: '"Cormorant Garamond", Georgia, serif',
-                    fontSize: '1.5rem',
-                    fontWeight: 300,
-                    color: '#C9A96E',
-                  }}
-                >
-                  {step.num}
-                </span>
+                {step.num}
               </div>
 
               <h3
@@ -128,7 +116,7 @@ export default function Method() {
                   fontFamily: '"Cormorant Garamond", Georgia, serif',
                   fontSize: '1.4rem',
                   fontWeight: 400,
-                  color: '#F7F6F2',
+                  color: '#1A1814',
                   marginBottom: '0.75rem',
                 }}
               >
@@ -139,7 +127,7 @@ export default function Method() {
                   fontFamily: 'Jost, sans-serif',
                   fontSize: '0.88rem',
                   fontWeight: 300,
-                  color: '#8B8678',
+                  color: '#8B8070',
                   lineHeight: 1.7,
                 }}
               >

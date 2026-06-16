@@ -23,7 +23,7 @@ export default function Referencing() {
     <section
       id="referencement"
       style={{
-        background: '#131210',
+        background: '#1A1814',
         padding: '6rem 2rem',
       }}
     >
@@ -35,7 +35,7 @@ export default function Referencing() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8678',
+              color: '#8B8070',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -48,7 +48,7 @@ export default function Referencing() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#F7F6F2',
+              color: '#F5F1E8',
               lineHeight: 1.1,
               maxWidth: '600px',
             }}
@@ -80,7 +80,7 @@ export default function Referencing() {
                   style={{
                     width: '2.5rem',
                     height: '2.5rem',
-                    border: '1px solid #C9A96E44',
+                    border: '1px solid rgba(156,124,70,0.35)',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
@@ -93,7 +93,7 @@ export default function Referencing() {
                     style={{
                       fontFamily: '"Cormorant Garamond", Georgia, serif',
                       fontSize: '1rem',
-                      color: '#C9A96E',
+                      color: '#9C7C46',
                     }}
                   >
                     {point.num}
@@ -105,7 +105,7 @@ export default function Referencing() {
                       fontFamily: '"Cormorant Garamond", Georgia, serif',
                       fontSize: '1.2rem',
                       fontWeight: 400,
-                      color: '#F7F6F2',
+                      color: '#F5F1E8',
                       marginBottom: '0.5rem',
                     }}
                   >
@@ -116,7 +116,7 @@ export default function Referencing() {
                       fontFamily: 'Jost, sans-serif',
                       fontSize: '0.88rem',
                       fontWeight: 300,
-                      color: '#8B8678',
+                      color: '#8B8070',
                       lineHeight: 1.7,
                     }}
                   >
@@ -146,15 +146,14 @@ export default function Referencing() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="80" cy="80" r="72" stroke="#C9A96E" strokeWidth="1.5" fill="none" />
-                <circle cx="80" cy="80" r="60" stroke="#C9A96E" strokeWidth="0.5" fill="none" opacity="0.4" />
-                {/* Star */}
+                <circle cx="80" cy="80" r="72" stroke="#9C7C46" strokeWidth="1.5" fill="none" />
+                <circle cx="80" cy="80" r="60" stroke="#9C7C46" strokeWidth="0.5" fill="none" opacity="0.4" />
                 <path
                   d="M80 45L86.7 67.3H110.5L91.9 80.5L98.6 102.8L80 89.6L61.4 102.8L68.1 80.5L49.5 67.3H73.3L80 45Z"
-                  fill="#C9A96E"
+                  fill="#9C7C46"
                   opacity="0.9"
                 />
-                <text x="80" y="128" fontFamily="Jost, sans-serif" fontSize="11" fill="#C9A96E" textAnchor="middle" letterSpacing="3">SUPERHOST</text>
+                <text x="80" y="128" fontFamily="Jost, sans-serif" fontSize="11" fill="#9C7C46" textAnchor="middle" letterSpacing="3">SUPERHOST</text>
               </svg>
             </motion.div>
 
@@ -166,15 +165,14 @@ export default function Referencing() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <svg width="160" height="80" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="1" y="1" width="158" height="78" stroke="#C9A96E" strokeWidth="1" fill="none" />
-                <rect x="5" y="5" width="150" height="70" stroke="#C9A96E" strokeWidth="0.5" fill="none" opacity="0.3" />
-                {/* Heart */}
+                <rect x="1" y="1" width="158" height="78" stroke="#9C7C46" strokeWidth="1" fill="none" />
+                <rect x="5" y="5" width="150" height="70" stroke="#9C7C46" strokeWidth="0.5" fill="none" opacity="0.3" />
                 <path
                   d="M80 55C80 55 56 42 56 29C56 22.4 61.4 17 68 17C72 17 75.5 19 78 22C79 23 79.5 24 80 25C80.5 24 81 23 82 22C84.5 19 88 17 92 17C98.6 17 104 22.4 104 29C104 42 80 55 80 55Z"
-                  fill="#C9A96E"
+                  fill="#9C7C46"
                   opacity="0.9"
                 />
-                <text x="80" y="72" fontFamily="Jost, sans-serif" fontSize="9" fill="#C9A96E" textAnchor="middle" letterSpacing="2">COUP DE CŒUR</text>
+                <text x="80" y="72" fontFamily="Jost, sans-serif" fontSize="9" fill="#9C7C46" textAnchor="middle" letterSpacing="2">COUP DE CŒUR</text>
               </svg>
             </motion.div>
 
@@ -182,7 +180,7 @@ export default function Referencing() {
               style={{
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.78rem',
-                color: '#8B8678',
+                color: '#8B8070',
                 textAlign: 'center',
                 lineHeight: 1.6,
                 marginTop: '0.5rem',

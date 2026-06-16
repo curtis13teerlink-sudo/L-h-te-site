@@ -8,11 +8,15 @@ import NavBar from './components/ui/NavBar'
 import HeroOverlay from './components/sections/HeroOverlay'
 import ServicePanels from './components/sections/ServicePanels'
 import BuildingFallback from './components/3d/BuildingFallback'
+import WhyUs from './components/sections/WhyUs'
+import Services from './components/sections/Services'
 import BeforeAfter from './components/sections/BeforeAfter'
+import Compliance from './components/sections/Compliance'
 import Stats from './components/sections/Stats'
 import Estimator from './components/sections/Estimator'
 import Method from './components/sections/Method'
 import Referencing from './components/sections/Referencing'
+import FAQ from './components/sections/FAQ'
 import Contact from './components/sections/Contact'
 import Footer from './components/sections/Footer'
 
@@ -47,8 +51,8 @@ export default function App() {
   return (
     <div
       style={{
-        background: '#0E0E0C',
-        color: '#F7F6F2',
+        background: '#F5F1E8',
+        color: '#1A1814',
         fontFamily: 'Jost, sans-serif',
         minHeight: '100vh',
         overflowX: 'hidden',
@@ -56,10 +60,14 @@ export default function App() {
     >
       <NavBar />
 
-      {/* Zone d'expérience 3D sticky — 600vh */}
+      {/* Zone d'expérience 3D sticky — 600vh, fond nuit */}
       <div
         ref={scrollZoneRef}
-        style={{ height: reducedMotion ? '100vh' : '600vh', position: 'relative' }}
+        style={{
+          height: reducedMotion ? '100vh' : '600vh',
+          position: 'relative',
+          background: '#0D1420',
+        }}
       >
         <div
           style={{
@@ -68,6 +76,7 @@ export default function App() {
             height: '100vh',
             width: '100%',
             overflow: 'hidden',
+            background: '#0D1420',
           }}
         >
           {show3D ? (
@@ -84,12 +93,16 @@ export default function App() {
         </div>
       </div>
 
-      {/* Sections normales */}
+      {/* Sections normales — alternance clair/sombre */}
+      <WhyUs />
+      <Services />
       <BeforeAfter />
+      <Compliance />
       <Stats />
       <Estimator />
       <Method />
       <Referencing />
+      <FAQ />
       <Contact />
       <Footer />
     </div>

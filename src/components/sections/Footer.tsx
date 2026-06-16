@@ -4,8 +4,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: '#0E0E0C',
-        borderTop: '1px solid rgba(201, 169, 110, 0.2)',
+        background: '#1A1814',
+        borderTop: '1px solid rgba(156, 124, 70, 0.2)',
         padding: '4rem 2rem 2.5rem',
       }}
     >
@@ -25,7 +25,7 @@ export default function Footer() {
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '2rem',
                 fontWeight: 300,
-                color: '#F7F6F2',
+                color: '#9C7C46',
                 letterSpacing: '0.1em',
                 marginBottom: '0.25rem',
               }}
@@ -38,7 +38,7 @@ export default function Footer() {
                 fontSize: '0.65rem',
                 letterSpacing: '0.25em',
                 textTransform: 'uppercase',
-                color: '#8B8678',
+                color: '#8B8070',
                 marginBottom: '1.25rem',
               }}
             >
@@ -49,7 +49,7 @@ export default function Footer() {
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.85rem',
                 fontWeight: 300,
-                color: '#8B8678',
+                color: '#8B8070',
                 lineHeight: 1.7,
                 maxWidth: '260px',
               }}
@@ -58,7 +58,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Adossé à */}
+          {/* Groupe */}
           <div>
             <div
               style={{
@@ -66,7 +66,7 @@ export default function Footer() {
                 fontSize: '0.72rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#8B8678',
+                color: '#8B8070',
                 marginBottom: '1rem',
               }}
             >
@@ -77,13 +77,13 @@ export default function Footer() {
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.88rem',
                 fontWeight: 300,
-                color: '#8B8678',
+                color: '#8B8070',
                 lineHeight: 1.7,
               }}
             >
               Adossé à{' '}
-              <span style={{ color: '#C9A96E' }}>Private T</span>
-              , conciergerie de luxe à Paris.
+              <span style={{ color: '#9C7C46' }}>Private T</span>
+              , conciergerie de luxe parisienne depuis 15 ans.
             </p>
           </div>
 
@@ -95,40 +95,39 @@ export default function Footer() {
                 fontSize: '0.72rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#8B8678',
+                color: '#8B8070',
                 marginBottom: '1rem',
               }}
             >
               Contact
             </div>
             <a
-              href="mailto:contact@lhote-paris.fr"
+              href="mailto:contact@lhote.fr"
               style={{
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.88rem',
                 fontWeight: 300,
-                color: '#C9A96E',
+                color: '#9C7C46',
                 textDecoration: 'none',
                 display: 'block',
-                marginBottom: '0.5rem',
+                marginBottom: '1rem',
                 transition: 'opacity 0.2s',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7' }}
               onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}
             >
-              contact@lhote-paris.fr
+              contact@lhote.fr
             </a>
             <p
               style={{
                 fontFamily: 'Jost, sans-serif',
-                fontSize: '0.8rem',
+                fontSize: '0.75rem',
                 fontWeight: 300,
-                color: '#8B8678',
-                marginTop: '1rem',
+                color: '#8B8070',
                 lineHeight: 1.6,
               }}
             >
-              Vos données ne sont jamais transmises à des tiers.
+              Données personnelles traitées conformément au RGPD. Non transmises à des tiers.
             </p>
           </div>
         </div>
@@ -136,7 +135,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           style={{
-            borderTop: '1px solid rgba(247, 246, 242, 0.06)',
+            borderTop: '1px solid rgba(245, 241, 232, 0.06)',
             paddingTop: '1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
@@ -149,21 +148,21 @@ export default function Footer() {
             style={{
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.75rem',
-              color: '#8B8678',
+              color: '#8B8070',
               fontWeight: 300,
             }}
           >
-            © {year} L'HÔTE — Tous droits réservés
+            © {year} L'HÔTE · Paris · Tous droits réservés
           </p>
           <p
             style={{
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.75rem',
-              color: '#8B8678',
+              color: '#8B8070',
               fontWeight: 300,
             }}
           >
-            Paris, France
+            L'HÔTE · Paris · France
           </p>
         </div>
       </div>
