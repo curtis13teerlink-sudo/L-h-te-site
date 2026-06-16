@@ -1,8 +1,9 @@
 import { useRef, useEffect, Suspense, lazy } from 'react'
-import { gsap, ScrollTrigger } from './lib/gsap'
+import { ScrollTrigger } from './lib/gsap'
 import { useLenis } from './hooks/useLenis'
 import { useReducedMotion } from './hooks/useReducedMotion'
 import { useWebGL } from './hooks/useWebGL'
+import { ErrorBoundary } from './components/ui/ErrorBoundary'
 import NavBar from './components/ui/NavBar'
 import HeroOverlay from './components/sections/HeroOverlay'
 import ServicePanels from './components/sections/ServicePanels'
@@ -16,9 +17,6 @@ import Contact from './components/sections/Contact'
 import Footer from './components/sections/Footer'
 
 const BuildingScene = lazy(() => import('./components/3d/BuildingScene'))
-
-// Suppress unused import warning — gsap is used for side-effects (plugin registration)
-void gsap
 
 export default function App() {
   const scrollZoneRef = useRef<HTMLDivElement>(null)
@@ -53,11 +51,12 @@ export default function App() {
         color: '#F7F6F2',
         fontFamily: 'Jost, sans-serif',
         minHeight: '100vh',
+        overflowX: 'hidden',
       }}
     >
       <NavBar />
 
-      {/* 3D sticky experience zone — 600vh */}
+      {/* Zone d'expérience 3D sticky — 600vh */}
       <div
         ref={scrollZoneRef}
         style={{ height: reducedMotion ? '100vh' : '600vh', position: 'relative' }}
@@ -72,9 +71,11 @@ export default function App() {
           }}
         >
           {show3D ? (
-            <Suspense fallback={<BuildingFallback />}>
-              <BuildingScene progressRef={progressRef} />
-            </Suspense>
+            <ErrorBoundary fallback={<BuildingFallback />}>
+              <Suspense fallback={<BuildingFallback />}>
+                <BuildingScene progressRef={progressRef} />
+              </Suspense>
+            </ErrorBoundary>
           ) : (
             <BuildingFallback />
           )}
@@ -83,7 +84,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Normal sections */}
+      {/* Sections normales */}
       <BeforeAfter />
       <Stats />
       <Estimator />

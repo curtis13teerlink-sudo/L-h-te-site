@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -192,13 +192,15 @@ export default function HaussmannBuilding({ progressRef }: HaussmannBuildingProp
     f1: BASE_F1_Y,
   })
 
-  // Mouse tracking
-  if (typeof window !== 'undefined') {
-    window.onmousemove = (e: MouseEvent) => {
+  // Mouse tracking — dans useEffect, pas dans le rendu
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
       mouseRef.current.x = (e.clientX / window.innerWidth - 0.5) * 2
       mouseRef.current.y = (e.clientY / window.innerHeight - 0.5) * 2
     }
-  }
+    window.addEventListener('mousemove', handler, { passive: true })
+    return () => window.removeEventListener('mousemove', handler)
+  }, [])
 
   useFrame((_state, _delta) => {
     if (!buildingGroupRef.current) return
