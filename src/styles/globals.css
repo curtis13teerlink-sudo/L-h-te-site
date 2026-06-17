@@ -3,22 +3,22 @@
 
 /* ── Variables ── */
 :root {
-  --bg-main: #F5F1E8;
-  --bg-secondary: #EDE8DE;
-  --bg-dark: #1A1814;
-  --bg-night: #0D1420;
-  --text-dark: #1A1814;
-  --text-light: #F5F1E8;
+  --bg-main: #F2EDE3;
+  --bg-secondary: #E8E1D4;
+  --bg-dark: #1B2A4A;
+  --bg-night: #0A1628;
+  --text-dark: #1B2A4A;
+  --text-light: #F2EDE3;
   --gold: #9C7C46;
-  --terracotta: #C17A56;
-  --stone: #8B8070;
-  --cream-pale: #FAF8F2;
+  --terracotta: #1F4E5F;
+  --stone: #7A8696;
+  --cream-pale: #F5F0E8;
 
   /* legacy aliases kept for backward compat */
-  --color-black: #1A1814;
-  --color-cream: #F5F1E8;
+  --color-black: #1B2A4A;
+  --color-cream: #F2EDE3;
   --color-gold: #9C7C46;
-  --color-stone: #8B8070;
+  --color-stone: #7A8696;
 }
 
 /* ── Reset ── */

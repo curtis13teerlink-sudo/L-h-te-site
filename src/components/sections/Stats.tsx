@@ -41,7 +41,7 @@ function StatItem({ value, label, index }: { value: string; label: string; index
           fontFamily: 'Jost, sans-serif',
           fontSize: '0.85rem',
           fontWeight: 300,
-          color: '#8B8070',
+          color: '#7A8696',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
         }}
@@ -56,7 +56,7 @@ export default function Stats() {
   return (
     <section
       style={{
-        background: '#1A1814',
+        background: '#1B2A4A',
         padding: '5rem 2rem',
       }}
     >

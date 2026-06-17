@@ -41,7 +41,7 @@ export default function Compliance() {
   return (
     <section
       style={{
-        background: '#1A1814',
+        background: '#1B2A4A',
         padding: '6rem 2rem',
       }}
     >
@@ -66,7 +66,7 @@ export default function Compliance() {
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#F5F1E8',
+              color: '#F2EDE3',
               lineHeight: 1.1,
               maxWidth: '680px',
             }}
@@ -98,7 +98,7 @@ export default function Compliance() {
                   fontFamily: '"Cormorant Garamond", Georgia, serif',
                   fontSize: '1.25rem',
                   fontWeight: 400,
-                  color: '#F5F1E8',
+                  color: '#F2EDE3',
                   marginBottom: '0.75rem',
                   lineHeight: 1.25,
                 }}
@@ -110,7 +110,7 @@ export default function Compliance() {
                   fontFamily: 'Jost, sans-serif',
                   fontSize: '0.88rem',
                   fontWeight: 300,
-                  color: '#8B8070',
+                  color: '#7A8696',
                   lineHeight: 1.7,
                 }}
               >
@@ -132,7 +132,7 @@ export default function Compliance() {
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.9rem',
               fontWeight: 300,
-              color: '#8B8070',
+              color: '#7A8696',
               letterSpacing: '0.04em',
             }}
           >

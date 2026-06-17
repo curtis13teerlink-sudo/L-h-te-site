@@ -44,7 +44,7 @@ export default function BeforeAfter() {
     <section
       id="before-after"
       style={{
-        background: '#F5F1E8',
+        background: '#F2EDE3',
         padding: '6rem 2rem',
       }}
     >
@@ -56,7 +56,7 @@ export default function BeforeAfter() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -69,7 +69,7 @@ export default function BeforeAfter() {
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#1A1814',
+              color: '#1B2A4A',
               lineHeight: 1.1,
               marginBottom: '0.75rem',
             }}
@@ -81,7 +81,7 @@ export default function BeforeAfter() {
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.95rem',
               fontWeight: 300,
-              color: '#8B8070',
+              color: '#7A8696',
             }}
           >
             Même appartement. Même surface. Des résultats incomparables.
@@ -139,7 +139,7 @@ export default function BeforeAfter() {
                     fontFamily: '"Cormorant Garamond", Georgia, serif',
                     fontSize: '1.4rem',
                     fontStyle: 'italic',
-                    color: '#1A1814',
+                    color: '#1B2A4A',
                     marginBottom: '0.4rem',
                   }}
                 >
@@ -149,7 +149,7 @@ export default function BeforeAfter() {
                   style={{
                     fontFamily: 'Jost, sans-serif',
                     fontSize: '0.78rem',
-                    color: '#8B8070',
+                    color: '#7A8696',
                   }}
                 >
                   Après valorisation et shooting professionnel
@@ -163,7 +163,7 @@ export default function BeforeAfter() {
                 position: 'absolute',
                 inset: 0,
                 clipPath: `inset(0 ${100 - position}% 0 0)`,
-                background: 'linear-gradient(135deg, #C8BDA5 0%, #8B8070 100%)',
+                background: 'linear-gradient(135deg, #C8BDA5 0%, #7A8696 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -177,7 +177,7 @@ export default function BeforeAfter() {
                     fontSize: '0.65rem',
                     letterSpacing: '0.2em',
                     textTransform: 'uppercase',
-                    color: '#FAF8F2',
+                    color: '#F5F0E8',
                     marginBottom: '0.5rem',
                     opacity: 0.7,
                   }}
@@ -189,7 +189,7 @@ export default function BeforeAfter() {
                     fontFamily: '"Cormorant Garamond", Georgia, serif',
                     fontSize: '1.4rem',
                     fontStyle: 'italic',
-                    color: '#FAF8F2',
+                    color: '#F5F0E8',
                     marginBottom: '0.4rem',
                   }}
                 >
@@ -199,7 +199,7 @@ export default function BeforeAfter() {
                   style={{
                     fontFamily: 'Jost, sans-serif',
                     fontSize: '0.78rem',
-                    color: '#EDE8DE',
+                    color: '#E8E1D4',
                     opacity: 0.8,
                   }}
                 >
@@ -252,7 +252,7 @@ export default function BeforeAfter() {
                 fontSize: '0.7rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#FAF8F2',
+                color: '#F5F0E8',
                 background: 'rgba(26,24,20,0.6)',
                 padding: '0.25rem 0.6rem',
                 zIndex: 5,
@@ -269,7 +269,7 @@ export default function BeforeAfter() {
                 fontSize: '0.7rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#1A1814',
+                color: '#1B2A4A',
                 background: 'rgba(156,124,70,0.85)',
                 padding: '0.25rem 0.6rem',
                 zIndex: 5,
@@ -285,7 +285,7 @@ export default function BeforeAfter() {
               marginTop: '1rem',
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.75rem',
-              color: '#8B8070',
+              color: '#7A8696',
               letterSpacing: '0.08em',
             }}
           >

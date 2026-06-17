@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: '#1A1814',
+        background: '#1B2A4A',
         borderTop: '1px solid rgba(156, 124, 70, 0.2)',
         padding: '4rem 2rem 2.5rem',
       }}
@@ -38,7 +38,7 @@ export default function Footer() {
                 fontSize: '0.65rem',
                 letterSpacing: '0.25em',
                 textTransform: 'uppercase',
-                color: '#8B8070',
+                color: '#7A8696',
                 marginBottom: '1.25rem',
               }}
             >
@@ -49,7 +49,7 @@ export default function Footer() {
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.85rem',
                 fontWeight: 300,
-                color: '#8B8070',
+                color: '#7A8696',
                 lineHeight: 1.7,
                 maxWidth: '260px',
               }}
@@ -66,7 +66,7 @@ export default function Footer() {
                 fontSize: '0.72rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#8B8070',
+                color: '#7A8696',
                 marginBottom: '1rem',
               }}
             >
@@ -77,7 +77,7 @@ export default function Footer() {
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.88rem',
                 fontWeight: 300,
-                color: '#8B8070',
+                color: '#7A8696',
                 lineHeight: 1.7,
               }}
             >
@@ -95,7 +95,7 @@ export default function Footer() {
                 fontSize: '0.72rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#8B8070',
+                color: '#7A8696',
                 marginBottom: '1rem',
               }}
             >
@@ -123,7 +123,7 @@ export default function Footer() {
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.75rem',
                 fontWeight: 300,
-                color: '#8B8070',
+                color: '#7A8696',
                 lineHeight: 1.6,
               }}
             >
@@ -135,7 +135,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           style={{
-            borderTop: '1px solid rgba(245, 241, 232, 0.06)',
+            borderTop: '1px solid rgba(242, 237, 227, 0.06)',
             paddingTop: '1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
@@ -148,7 +148,7 @@ export default function Footer() {
             style={{
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.75rem',
-              color: '#8B8070',
+              color: '#7A8696',
               fontWeight: 300,
             }}
           >
@@ -158,7 +158,7 @@ export default function Footer() {
             style={{
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.75rem',
-              color: '#8B8070',
+              color: '#7A8696',
               fontWeight: 300,
             }}
           >

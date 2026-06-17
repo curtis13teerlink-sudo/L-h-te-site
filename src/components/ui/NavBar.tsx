@@ -81,7 +81,7 @@ export default function NavBar() {
             fontSize: '1.4rem',
             fontWeight: 300,
             letterSpacing: '0.12em',
-            color: '#F5F1E8',
+            color: '#F2EDE3',
             lineHeight: 1,
           }}
         >
@@ -93,7 +93,7 @@ export default function NavBar() {
             fontSize: '0.55rem',
             letterSpacing: '0.3em',
             textTransform: 'uppercase',
-            color: '#8B8070',
+            color: '#7A8696',
             marginTop: '0.2rem',
           }}
         >
@@ -121,12 +121,12 @@ export default function NavBar() {
               fontWeight: 400,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               textDecoration: 'none',
               transition: 'color 0.2s ease',
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = '#F5F1E8' }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = '#8B8070' }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#F2EDE3' }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#7A8696' }}
           >
             {link.label}
           </a>
@@ -148,7 +148,7 @@ export default function NavBar() {
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.background = '#9C7C46'
-            e.currentTarget.style.color = '#1A1814'
+            e.currentTarget.style.color = '#1B2A4A'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = 'transparent'
@@ -179,7 +179,7 @@ export default function NavBar() {
             display: 'block',
             width: '22px',
             height: '1px',
-            background: '#F5F1E8',
+            background: '#F2EDE3',
             transition: 'transform 0.3s ease, opacity 0.3s ease',
             transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none',
           }}
@@ -189,7 +189,7 @@ export default function NavBar() {
             display: 'block',
             width: '22px',
             height: '1px',
-            background: '#F5F1E8',
+            background: '#F2EDE3',
             transition: 'opacity 0.3s ease',
             opacity: menuOpen ? 0 : 1,
           }}
@@ -199,7 +199,7 @@ export default function NavBar() {
             display: 'block',
             width: '22px',
             height: '1px',
-            background: '#F5F1E8',
+            background: '#F2EDE3',
             transition: 'transform 0.3s ease, opacity 0.3s ease',
             transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none',
           }}
@@ -232,7 +232,7 @@ export default function NavBar() {
                 fontSize: '1rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: '#F5F1E8',
+                color: '#F2EDE3',
                 textDecoration: 'none',
                 padding: '0.5rem 0',
                 borderBottom: '1px solid rgba(245, 241, 232, 0.06)',

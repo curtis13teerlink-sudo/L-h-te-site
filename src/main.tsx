@@ -7,8 +7,8 @@ import { ErrorBoundary } from './components/ui/ErrorBoundary'
 const RootFallback = () => (
   <div
     style={{
-      background: '#0E0E0C',
-      color: '#F7F6F2',
+      background: '#0A1628',
+      color: '#F2EDE3',
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',

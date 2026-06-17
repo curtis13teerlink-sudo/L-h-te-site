@@ -140,7 +140,7 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
                 fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
                 fontWeight: 300,
                 fontStyle: 'italic',
-                color: '#F5F1E8',
+                color: '#F2EDE3',
                 lineHeight: 1.1,
                 marginBottom: '1.2rem',
                 whiteSpace: 'pre-line',
@@ -153,7 +153,7 @@ export default function ServicePanels({ progressRef }: ServicePanelsProps) {
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.88rem',
                 fontWeight: 300,
-                color: '#8B8070',
+                color: '#7A8696',
                 lineHeight: 1.7,
               }}
             >

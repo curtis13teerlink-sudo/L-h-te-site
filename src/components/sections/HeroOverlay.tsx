@@ -76,7 +76,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             fontSize: 'clamp(2.5rem, 7vw, 6rem)',
             fontWeight: 300,
             fontStyle: 'italic',
-            color: '#F5F1E8',
+            color: '#F2EDE3',
             lineHeight: 1.05,
             letterSpacing: '-0.01em',
             marginBottom: '1.5rem',
@@ -92,7 +92,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             fontFamily: 'Jost, sans-serif',
             fontSize: 'clamp(0.95rem, 1.8vw, 1.15rem)',
             fontWeight: 300,
-            color: '#8B8070',
+            color: '#7A8696',
             marginBottom: '2.5rem',
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
@@ -119,7 +119,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = '#9C7C46'
-              e.currentTarget.style.color = '#1A1814'
+              e.currentTarget.style.color = '#1B2A4A'
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = 'transparent'
@@ -152,7 +152,7 @@ export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayP
             fontSize: '0.7rem',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#8B8070',
+            color: '#7A8696',
           }}
         >
           Défiler

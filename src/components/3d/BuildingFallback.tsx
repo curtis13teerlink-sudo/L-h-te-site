@@ -4,7 +4,7 @@ export default function BuildingFallback() {
       style={{
         position: 'absolute',
         inset: 0,
-        background: '#0D1420',
+        background: '#0A1628',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -19,7 +19,7 @@ export default function BuildingFallback() {
         opacity={0.7}
       >
         {/* Main facade */}
-        <rect x="40" y="80" width="200" height="300" fill="#1A1814" stroke="#9C7C46" strokeWidth="0.5" />
+        <rect x="40" y="80" width="200" height="300" fill="#1B2A4A" stroke="#9C7C46" strokeWidth="0.5" />
 
         {/* Roof / mansard */}
         <rect x="30" y="55" width="220" height="30" fill="#1C2430" stroke="#9C7C46" strokeWidth="0.5" />
@@ -65,8 +65,8 @@ export default function BuildingFallback() {
         <rect x="118" y="340" width="44" height="38" fill="#1C2A3A" stroke="#9C7C46" strokeWidth="0.5" />
         <path d="M118,340 Q140,318 162,340" fill="#1C2A3A" stroke="#9C7C46" strokeWidth="0.5" />
         {/* Pilastres */}
-        <rect x="110" y="335" width="10" height="45" fill="#1A1814" stroke="#9C7C46" strokeWidth="0.5" />
-        <rect x="160" y="335" width="10" height="45" fill="#1A1814" stroke="#9C7C46" strokeWidth="0.5" />
+        <rect x="110" y="335" width="10" height="45" fill="#1B2A4A" stroke="#9C7C46" strokeWidth="0.5" />
+        <rect x="160" y="335" width="10" height="45" fill="#1B2A4A" stroke="#9C7C46" strokeWidth="0.5" />
         {/* Side windows ground */}
         <rect x="65" y="338" width="35" height="40" fill="#1C2A3A" stroke="#9C7C46" strokeWidth="0.5" />
         <rect x="180" y="338" width="35" height="40" fill="#1C2A3A" stroke="#9C7C46" strokeWidth="0.5" />

@@ -5,7 +5,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: '0.72rem',
   letterSpacing: '0.15em',
   textTransform: 'uppercase',
-  color: '#8B8070',
+  color: '#7A8696',
   display: 'block',
   marginBottom: '0.3rem',
 }
@@ -33,7 +33,7 @@ export default function Contact() {
     background: 'transparent',
     border: 'none',
     borderBottom: `1px solid ${focused === name ? '#9C7C46' : '#C8BDA5'}`,
-    color: '#1A1814',
+    color: '#1B2A4A',
     fontFamily: 'Jost, sans-serif',
     fontSize: '1rem',
     fontWeight: 300,
@@ -46,7 +46,7 @@ export default function Contact() {
     <section
       id="contact"
       style={{
-        background: '#F5F1E8',
+        background: '#F2EDE3',
         padding: '6rem 2rem',
       }}
     >
@@ -58,7 +58,7 @@ export default function Contact() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -71,7 +71,7 @@ export default function Contact() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#1A1814',
+              color: '#1B2A4A',
               lineHeight: 1.1,
               marginBottom: '1rem',
             }}
@@ -83,7 +83,7 @@ export default function Contact() {
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.95rem',
               fontWeight: 300,
-              color: '#8B8070',
+              color: '#7A8696',
               lineHeight: 1.7,
             }}
           >
@@ -104,13 +104,13 @@ export default function Contact() {
               style={{
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '1.5rem',
-                color: '#1A1814',
+                color: '#1B2A4A',
                 marginBottom: '0.75rem',
               }}
             >
               Message reçu
             </div>
-            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.9rem', color: '#8B8070' }}>
+            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.9rem', color: '#7A8696' }}>
               Nous vous recontactons sous 24h pour planifier votre diagnostic.
             </p>
           </div>
@@ -205,7 +205,7 @@ export default function Contact() {
                   display: 'inline-block',
                   padding: '1rem 3rem',
                   background: '#9C7C46',
-                  color: '#FAF8F2',
+                  color: '#F5F0E8',
                   fontFamily: 'Jost, sans-serif',
                   fontSize: '0.85rem',
                   fontWeight: 500,

@@ -41,7 +41,7 @@ export default function FAQ() {
   return (
     <section
       style={{
-        background: '#F5F1E8',
+        background: '#F2EDE3',
         padding: '6rem 2rem',
       }}
     >
@@ -66,7 +66,7 @@ export default function FAQ() {
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#1A1814',
+              color: '#1B2A4A',
               lineHeight: 1.1,
             }}
           >
@@ -102,7 +102,7 @@ export default function FAQ() {
                     fontFamily: '"Cormorant Garamond", Georgia, serif',
                     fontSize: '1.1rem',
                     fontWeight: 400,
-                    color: '#1A1814',
+                    color: '#1B2A4A',
                     lineHeight: 1.3,
                     flex: 1,
                   }}
@@ -133,7 +133,7 @@ export default function FAQ() {
                       fontFamily: 'Jost, sans-serif',
                       fontSize: '0.92rem',
                       fontWeight: 300,
-                      color: '#8B8070',
+                      color: '#7A8696',
                       lineHeight: 1.75,
                     }}
                   >

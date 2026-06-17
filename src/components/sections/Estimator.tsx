@@ -10,7 +10,7 @@ export default function Estimator() {
     <section
       id="estimateur"
       style={{
-        background: '#F5F1E8',
+        background: '#F2EDE3',
         padding: '6rem 2rem',
       }}
     >
@@ -22,7 +22,7 @@ export default function Estimator() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -35,7 +35,7 @@ export default function Estimator() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#1A1814',
+              color: '#1B2A4A',
               lineHeight: 1.1,
               marginBottom: '1rem',
             }}
@@ -47,7 +47,7 @@ export default function Estimator() {
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.95rem',
               fontWeight: 300,
-              color: '#8B8070',
+              color: '#7A8696',
             }}
           >
             Déplacez les curseurs pour voir ce que L'HÔTE peut générer pour votre bien.
@@ -70,7 +70,7 @@ export default function Estimator() {
                 fontSize: '0.8rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: '#8B8070',
+                color: '#7A8696',
               }}
             >
               Revenus mensuels actuels
@@ -79,7 +79,7 @@ export default function Estimator() {
               style={{
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '1.3rem',
-                color: '#1A1814',
+                color: '#1B2A4A',
               }}
             >
               {revenuActuel.toLocaleString('fr-FR')} €
@@ -112,7 +112,7 @@ export default function Estimator() {
                 fontSize: '0.8rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: '#8B8070',
+                color: '#7A8696',
               }}
             >
               Nuits louées par mois
@@ -121,7 +121,7 @@ export default function Estimator() {
               style={{
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '1.3rem',
-                color: '#1A1814',
+                color: '#1B2A4A',
               }}
             >
               {nuits} nuits
@@ -153,7 +153,7 @@ export default function Estimator() {
               fontSize: '0.75rem',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               marginBottom: '0.75rem',
             }}
           >
@@ -175,7 +175,7 @@ export default function Estimator() {
             style={{
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.75rem',
-              color: '#8B8070',
+              color: '#7A8696',
               fontStyle: 'italic',
               marginTop: '1rem',
             }}
@@ -191,7 +191,7 @@ export default function Estimator() {
               display: 'inline-block',
               padding: '0.85rem 2.5rem',
               background: '#9C7C46',
-              color: '#FAF8F2',
+              color: '#F5F0E8',
               fontFamily: 'Jost, sans-serif',
               fontSize: '0.85rem',
               fontWeight: 500,

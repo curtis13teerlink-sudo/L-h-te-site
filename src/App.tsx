@@ -51,8 +51,8 @@ export default function App() {
   return (
     <div
       style={{
-        background: '#F5F1E8',
-        color: '#1A1814',
+        background: '#F2EDE3',
+        color: '#1B2A4A',
         fontFamily: 'Jost, sans-serif',
         minHeight: '100vh',
         overflowX: 'hidden',
@@ -66,7 +66,7 @@ export default function App() {
         style={{
           height: reducedMotion ? '100vh' : '600vh',
           position: 'relative',
-          background: '#0D1420',
+          background: '#0A1628',
         }}
       >
         <div
@@ -76,7 +76,7 @@ export default function App() {
             height: '100vh',
             width: '100%',
             overflow: 'hidden',
-            background: '#0D1420',
+            background: '#0A1628',
           }}
         >
           {show3D ? (

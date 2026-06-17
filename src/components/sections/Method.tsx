@@ -28,7 +28,7 @@ export default function Method() {
     <section
       id="methode"
       style={{
-        background: '#EDE8DE',
+        background: '#E8E1D4',
         padding: '6rem 2rem',
       }}
     >
@@ -40,7 +40,7 @@ export default function Method() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -53,7 +53,7 @@ export default function Method() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#1A1814',
+              color: '#1B2A4A',
               lineHeight: 1.1,
             }}
           >
@@ -116,7 +116,7 @@ export default function Method() {
                   fontFamily: '"Cormorant Garamond", Georgia, serif',
                   fontSize: '1.4rem',
                   fontWeight: 400,
-                  color: '#1A1814',
+                  color: '#1B2A4A',
                   marginBottom: '0.75rem',
                 }}
               >
@@ -127,7 +127,7 @@ export default function Method() {
                   fontFamily: 'Jost, sans-serif',
                   fontSize: '0.88rem',
                   fontWeight: 300,
-                  color: '#8B8070',
+                  color: '#7A8696',
                   lineHeight: 1.7,
                 }}
               >

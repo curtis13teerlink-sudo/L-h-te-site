@@ -67,7 +67,7 @@ export default function Services() {
   return (
     <section
       style={{
-        background: '#EDE8DE',
+        background: '#E8E1D4',
         padding: '6rem 2rem',
       }}
     >
@@ -79,7 +79,7 @@ export default function Services() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -92,7 +92,7 @@ export default function Services() {
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#1A1814',
+              color: '#1B2A4A',
               lineHeight: 1.1,
             }}
           >
@@ -128,7 +128,7 @@ function ServiceCard({
   return (
     <div
       style={{
-        background: '#FAF8F2',
+        background: '#F5F0E8',
         padding: '2rem',
         borderRadius: '2px',
         transition: 'box-shadow 0.25s ease',
@@ -146,7 +146,7 @@ function ServiceCard({
           fontFamily: '"Cormorant Garamond", Georgia, serif',
           fontSize: '1.3rem',
           fontWeight: 400,
-          color: '#1A1814',
+          color: '#1B2A4A',
           marginBottom: '0.75rem',
           lineHeight: 1.2,
         }}
@@ -158,7 +158,7 @@ function ServiceCard({
           fontFamily: 'Jost, sans-serif',
           fontSize: '0.88rem',
           fontWeight: 300,
-          color: '#8B8070',
+          color: '#7A8696',
           lineHeight: 1.7,
         }}
       >

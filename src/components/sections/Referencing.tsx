@@ -23,7 +23,7 @@ export default function Referencing() {
     <section
       id="referencement"
       style={{
-        background: '#1A1814',
+        background: '#1B2A4A',
         padding: '6rem 2rem',
       }}
     >
@@ -35,7 +35,7 @@ export default function Referencing() {
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#8B8070',
+              color: '#7A8696',
               display: 'block',
               marginBottom: '1rem',
             }}
@@ -48,7 +48,7 @@ export default function Referencing() {
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               fontWeight: 300,
               fontStyle: 'italic',
-              color: '#F5F1E8',
+              color: '#F2EDE3',
               lineHeight: 1.1,
               maxWidth: '600px',
             }}
@@ -105,7 +105,7 @@ export default function Referencing() {
                       fontFamily: '"Cormorant Garamond", Georgia, serif',
                       fontSize: '1.2rem',
                       fontWeight: 400,
-                      color: '#F5F1E8',
+                      color: '#F2EDE3',
                       marginBottom: '0.5rem',
                     }}
                   >
@@ -116,7 +116,7 @@ export default function Referencing() {
                       fontFamily: 'Jost, sans-serif',
                       fontSize: '0.88rem',
                       fontWeight: 300,
-                      color: '#8B8070',
+                      color: '#7A8696',
                       lineHeight: 1.7,
                     }}
                   >
@@ -180,7 +180,7 @@ export default function Referencing() {
               style={{
                 fontFamily: 'Jost, sans-serif',
                 fontSize: '0.78rem',
-                color: '#8B8070',
+                color: '#7A8696',
                 textAlign: 'center',
                 lineHeight: 1.6,
                 marginTop: '0.5rem',
