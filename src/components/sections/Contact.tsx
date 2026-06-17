@@ -104,14 +104,15 @@ export default function Contact() {
               style={{
                 fontFamily: '"Cormorant Garamond", Georgia, serif',
                 fontSize: '1.5rem',
+                fontStyle: 'italic',
                 color: '#1B2A4A',
                 marginBottom: '0.75rem',
               }}
             >
-              Message reçu
+              Merci pour votre message.
             </div>
-            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.9rem', color: '#7A8696' }}>
-              Nous vous recontactons sous 24h pour planifier votre diagnostic.
+            <p style={{ fontFamily: 'Jost, sans-serif', fontSize: '0.9rem', color: '#7A8696', lineHeight: 1.7 }}>
+              Nous vous répondons sous 24h pour planifier votre diagnostic gratuit.
             </p>
           </div>
         ) : (
@@ -119,11 +120,14 @@ export default function Contact() {
             name="contact"
             method="POST"
             data-netlify="true"
-            netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
           >
             <input type="hidden" name="form-name" value="contact" />
-            <input name="bot-field" type="hidden" />
+            {/* Honeypot : input réel caché par CSS — les bots le remplissent, pas les humains */}
+            <p style={{ display: 'none' }}>
+              <label>Ne pas remplir : <input name="bot-field" /></label>
+            </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 2rem' }}>
               <div style={{ marginBottom: '2rem' }}>
