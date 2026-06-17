@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="L'HÔTE — Conciergerie Airbnb haut de gamme à Paris. Gestion complète, revenus optimisés jusqu'à +40%." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>L'HÔTE — Conciergerie Airbnb Paris</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!--
+      Formulaire fantôme requis par Netlify Forms pour les SPA :
+      Netlify crawle le HTML statique au build — React ne produit pas de HTML,
+      donc ce formulaire invisible permet la détection du formulaire.
+    -->
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input name="prenom" type="text" />
+      <input name="email" type="email" />
+      <input name="telephone" type="tel" />
+      <input name="quartier" type="text" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
