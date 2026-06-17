@@ -1,12 +1,10 @@
-import { useRef, useEffect, Suspense, lazy } from 'react'
-import { ScrollTrigger } from './lib/gsap'
+import { Suspense, lazy } from 'react'
 import { useLenis } from './hooks/useLenis'
 import { useReducedMotion } from './hooks/useReducedMotion'
 import { useWebGL } from './hooks/useWebGL'
 import { ErrorBoundary } from './components/ui/ErrorBoundary'
 import NavBar from './components/ui/NavBar'
 import HeroOverlay from './components/sections/HeroOverlay'
-import ServicePanels from './components/sections/ServicePanels'
 import BuildingFallback from './components/3d/BuildingFallback'
 import WhyUs from './components/sections/WhyUs'
 import Services from './components/sections/Services'
@@ -23,28 +21,10 @@ import Footer from './components/sections/Footer'
 const BuildingScene = lazy(() => import('./components/3d/BuildingScene'))
 
 export default function App() {
-  const scrollZoneRef = useRef<HTMLDivElement>(null)
-  const progressRef = useRef<number>(0)
   const reducedMotion = useReducedMotion()
   const webGLSupported = useWebGL()
 
   useLenis()
-
-  useEffect(() => {
-    if (reducedMotion || !scrollZoneRef.current) return
-
-    const trigger = ScrollTrigger.create({
-      trigger: scrollZoneRef.current,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 1.5,
-      onUpdate: (self) => {
-        progressRef.current = self.progress
-      },
-    })
-
-    return () => trigger.kill()
-  }, [reducedMotion])
 
   const show3D = !reducedMotion && webGLSupported
 
@@ -60,38 +40,26 @@ export default function App() {
     >
       <NavBar />
 
-      {/* Zone d'expérience 3D sticky — 600vh, fond nuit */}
-      <div
-        ref={scrollZoneRef}
+      {/* Hero : exactement 100vh, immeuble 3D centré, overlay texte */}
+      <section
         style={{
-          height: reducedMotion ? '100vh' : '600vh',
           position: 'relative',
+          height: '100vh',
           background: '#0A1628',
+          overflow: 'hidden',
         }}
       >
-        <div
-          style={{
-            position: 'sticky',
-            top: 0,
-            height: '100vh',
-            width: '100%',
-            overflow: 'hidden',
-            background: '#0A1628',
-          }}
-        >
-          {show3D ? (
-            <ErrorBoundary fallback={<BuildingFallback />}>
-              <Suspense fallback={<BuildingFallback />}>
-                <BuildingScene progressRef={progressRef} />
-              </Suspense>
-            </ErrorBoundary>
-          ) : (
-            <BuildingFallback />
-          )}
-          <HeroOverlay progressRef={progressRef} reducedMotion={reducedMotion} />
-          {!reducedMotion && <ServicePanels progressRef={progressRef} />}
-        </div>
-      </div>
+        {show3D ? (
+          <ErrorBoundary fallback={<BuildingFallback />}>
+            <Suspense fallback={<BuildingFallback />}>
+              <BuildingScene />
+            </Suspense>
+          </ErrorBoundary>
+        ) : (
+          <BuildingFallback />
+        )}
+        <HeroOverlay reducedMotion={reducedMotion} />
+      </section>
 
       {/* Sections normales — alternance clair/sombre */}
       <WhyUs />

@@ -2,47 +2,12 @@ import { useRef, useEffect } from 'react'
 import { gsap } from '../../lib/gsap'
 
 interface HeroOverlayProps {
-  progressRef: React.MutableRefObject<number>
   reducedMotion: boolean
 }
 
-export default function HeroOverlay({ progressRef, reducedMotion }: HeroOverlayProps) {
+export default function HeroOverlay({ reducedMotion }: HeroOverlayProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const rafRef = useRef<number>(0)
 
-  useEffect(() => {
-    if (reducedMotion) return
-    if (!containerRef.current) return
-
-    let lastOpacity = 1
-
-    const update = () => {
-      const p = progressRef.current
-      let opacity: number
-      if (p < 0.12) {
-        opacity = 1
-      } else if (p > 0.18) {
-        opacity = 0
-      } else {
-        opacity = 1 - (p - 0.12) / 0.06
-      }
-
-      if (Math.abs(opacity - lastOpacity) > 0.005 && containerRef.current) {
-        containerRef.current.style.opacity = String(opacity)
-        containerRef.current.style.pointerEvents = opacity < 0.05 ? 'none' : 'auto'
-        lastOpacity = opacity
-      }
-
-      rafRef.current = requestAnimationFrame(update)
-    }
-
-    rafRef.current = requestAnimationFrame(update)
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-    }
-  }, [progressRef, reducedMotion])
-
-  // Animation d'entrée
   useEffect(() => {
     if (!containerRef.current || reducedMotion) return
     const el = containerRef.current
